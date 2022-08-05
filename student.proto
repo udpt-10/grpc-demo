@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message Student {
+    string mssv = 1;
+    string lastName = 2;
+    string firstName = 3;
+    string year = 4;
+}
+
+service StudentService {
+    rpc GetAllStudent (Empty) returns (StudentList) {}
+    rpc GetNews (StudentId) returns (Student) {}
+    rpc DeleteNews (StudentId) returns (Empty) {}
+    rpc EditNews (Student) returns (Student) {}
+    rpc AddNews (Student) returns (Student) {}
+}
+
+message StudentId {
+    string id = 1;
+}
+
+message Empty {}
+
+message StudentList {
+   repeated Student student = 1;
+}

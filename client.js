@@ -1,6 +1,6 @@
 const grpc = require("@grpc/grpc-js");
 var protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./news.proto";
+const PROTO_PATH = "./student.proto";
 
 const options = {
   keepCase: true,
@@ -12,16 +12,16 @@ const options = {
 
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
-const NewsService = grpc.loadPackageDefinition(packageDefinition).NewsService;
+const StudentService = grpc.loadPackageDefinition(packageDefinition).StudentService;
 
-const client = new NewsService(
+const client = new StudentService(
   "localhost:50051",
   grpc.credentials.createInsecure()
 );
 
-client.getAllNews({}, (error, news) => {
+client.GetAllStudent({}, (error, student) => {
   // if (!error) throw error;
-  console.log(news);
+  console.log(student);
 });
 
 module.exports = client;

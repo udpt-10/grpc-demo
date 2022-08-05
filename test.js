@@ -2,18 +2,18 @@
 // get all news
 const client = require("./client");
 
-client.getAllNews({}, (error, news) => {
-  if (!error) throw error;
-  console.log(news);
+client.GetAllStudent({}, (error, student) => {
+  // if (!error) throw error;
+  console.log(student);
 });
 
 // add a news
 client.addNews(
   {
-    id: 3,
-    title: "Title news 3",
-    body: "Body content 3",
-    postImage: "Image URL here",
+    mssv: 3,
+    lastName: "Title news 3",
+    firstName: "Body content 3",
+    year: "Image URL here",
   },
   (error, news) => {
     if (error) throw error;
@@ -25,10 +25,10 @@ client.addNews(
 // edit a news
 client.editNews(
   {
-    id: 2,
-    body: "Body content 2 edited.",
-    postImage: "Image URL edited.",
-    title: "Title for 2 edited.",
+    mssv: 1712180,
+    lastName: "Body content 2 edited.",
+    firstName: "Image URL edited.",
+    year: "Title for 2 edited.",
   },
   (error, news) => {
     if (error) throw error;
@@ -39,7 +39,7 @@ client.editNews(
 // delete a news
 // client.deleteNews(
 //   {
-//     id: 2,
+//     mssv: 1712180,
 //   },
 //   (error, news) => {
 //     if (error) throw error;

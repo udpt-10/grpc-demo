@@ -1,5 +1,5 @@
 const grpc = require("@grpc/grpc-js");
-const PROTO_PATH = "./news.proto";
+const PROTO_PATH = "./student.proto";
 var protoLoader = require("@grpc/proto-loader");
 
 const options = {
@@ -10,44 +10,45 @@ const options = {
   oneofs: true,
 };
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
-const newsProto = grpc.loadPackageDefinition(packageDefinition);
+const studentProto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server();
-var news = [
-  { id: "1", title: "Note 1", body: "Content 1", postImage: "Post image 1" },
-  { id: "2", title: "Note 2", body: "Content 2", postImage: "Post image 2" },
+var student = [
+  { mssv: "1712180", lastName: "Tien", firstName: "Pham", year: "5" },
+  { mssv: "1712181", lastName: "Tien", firstName: "Pham", year: "5" }
 ];
 
-server.addService(newsProto.NewsService.service, {
-  getAllNews: (_, callback) => {
-    console.log(news);
-    callback(null, {news});
+server.addService(studentProto.StudentService.service, {
+  GetAllStudent: (_, callback) => {
+    console.log(student);
+    callback(null, { student });
+
   },
   getNews: (_, callback) => {
-    const newsId = _.request.id;
-    const newsItem = news.find(({ id }) => newsId == id);
-    callback(null, newsItem);
+    const studentId = _.request.mssv;
+    const studentItem = student.find(({ mssv }) => studentId == mssv);
+    callback(null,{ studentItem });
   },
   deleteNews: (_, callback) => {
-    const newsId = _.request.id;
-    news = news.filter(({ id }) => id !== newsId);
+    const studentId = _.request.mssv;
+    student = student.filter(({ mssv }) => mssv !== studentId);
     callback(null, {});
   },
   editNews: (_, callback) => {
-    const newsId = _.request.id;
-    const newsItem = news.find(({ id }) => newsId == id);
-    console.log(newsItem);
-    newsItem.body = _.request.body;
-    newsItem.postImage = _.request.postImage;
-    newsItem.title = _.request.title;
-    callback(null, newsItem);
+    const studentId = _.request.mssv;
+    const studentItem = student.find(({ mssv }) => studentId == mssv);
+    console.log(studentItem);
+    studentItem.lastName = _.request.lastName;
+    studentItem.firstName = _.request.firstName;
+    studentItem.year = _.request.year;
+    callback(null, studentItem);
   },
   addNews: (call, callback) => {
-    let _news = { id: Date.now(), ...call.request };
-    news.push(_news);
-    console.log(_news);
+    let _student = { ...call.request };
+    student.push(_student);
+    console.log(_student);
     console.log('was created')
-    callback(null, _news);
+    callback(null, _student);
   },
 });
 
