@@ -8,41 +8,41 @@ client.GetAllStudent({}, (error, student) => {
 });
 
 // add a news
-client.addNews(
+client.addStudent(
   {
     mssv: 3,
     lastName: "Title news 3",
     firstName: "Body content 3",
     year: "Image URL here",
   },
-  (error, news) => {
+  (error, student) => {
     if (error) throw error;
     console.log("Successfully created a news.");
-    console.log(news);
+    console.log(student);
   }
 );
 
 // edit a news
-client.editNews(
+client.editStudent(
   {
     mssv: 1712180,
     lastName: "Body content 2 edited.",
     firstName: "Image URL edited.",
     year: "Title for 2 edited.",
   },
-  (error, news) => {
+  (error, student) => {
     if (error) throw error;
     console.log("Successfully edited a news.");
   }
 );
 
 // delete a news
-// client.deleteNews(
+// client.deleteStudent(
 //   {
 //     mssv: 1712180,
 //   },
-//   (error, news) => {
+//   (error, student) => {
 //     if (error) throw error;
-//     console.log("Successfully deleted a news item.");
+//     console.log("Successfully deleted a student item.");
 //   }
 // );

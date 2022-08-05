@@ -9,10 +9,10 @@ message Student {
 
 service StudentService {
     rpc GetAllStudent (Empty) returns (StudentList) {}
-    rpc GetNews (StudentId) returns (Student) {}
-    rpc DeleteNews (StudentId) returns (Empty) {}
-    rpc EditNews (Student) returns (Student) {}
-    rpc AddNews (Student) returns (Student) {}
+    rpc GetStudent (StudentId) returns (Student) {}
+    rpc DeleteStudent (StudentId) returns (Empty) {}
+    rpc EditStudent (Student) returns (Student) {}
+    rpc AddStudent (Student) returns (Student) {}
 }
 
 message StudentId {

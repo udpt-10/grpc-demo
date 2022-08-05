@@ -24,17 +24,17 @@ server.addService(studentProto.StudentService.service, {
     callback(null, { student });
 
   },
-  getNews: (_, callback) => {
+  getStudent: (_, callback) => {
     const studentId = _.request.mssv;
     const studentItem = student.find(({ mssv }) => studentId == mssv);
     callback(null,{ studentItem });
   },
-  deleteNews: (_, callback) => {
+  deleteStudent: (_, callback) => {
     const studentId = _.request.mssv;
     student = student.filter(({ mssv }) => mssv !== studentId);
     callback(null, {});
   },
-  editNews: (_, callback) => {
+  editStudent: (_, callback) => {
     const studentId = _.request.mssv;
     const studentItem = student.find(({ mssv }) => studentId == mssv);
     console.log(studentItem);
@@ -43,7 +43,7 @@ server.addService(studentProto.StudentService.service, {
     studentItem.year = _.request.year;
     callback(null, studentItem);
   },
-  addNews: (call, callback) => {
+  addStudent: (call, callback) => {
     let _student = { ...call.request };
     student.push(_student);
     console.log(_student);

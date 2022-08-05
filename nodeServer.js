@@ -12,7 +12,7 @@ const requestListener = function (req, res) {
     switch (method) {
       case "GET":
         if (url.length > 1 && url[1]) {
-          client.getNews(
+          client.getStudent(
             {
               id: url[1],
             },
@@ -30,7 +30,7 @@ const requestListener = function (req, res) {
 
         break;
       case "PUT":
-        client.editNews(
+        client.editStudent(
           {
             id: url[1],
             body: req.body.body,
@@ -45,7 +45,7 @@ const requestListener = function (req, res) {
 
         break;
       case "DELETE":
-        client.deleteNews(
+        client.deleteStudent(
           {
             id: url[1],
           },
@@ -57,7 +57,7 @@ const requestListener = function (req, res) {
 
         break;
       case "POST":
-        client.addNews(
+        client.addStudent(
           {
             body: req.body.body,
             postImage: req.body.postImage,
