@@ -1,5 +1,6 @@
 const grpc = require("@grpc/grpc-js");
 var protoLoader = require("@grpc/proto-loader");
+const { closeClient } = require("grpc");
 const PROTO_PATH = "./student.proto";
 
 const options = {
@@ -23,5 +24,9 @@ client.GetAllStudent({}, (error, student) => {
   // if (!error) throw error;
   console.log(student);
 });
+
+// client.getStudent({id: '18126020'}, (error, student) => {
+//   console.log(student);
+// });
 
 module.exports = client;

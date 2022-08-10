@@ -2,47 +2,57 @@
 // get all news
 const client = require("./client");
 
-client.GetAllStudent({}, (error, student) => {
-  // if (!error) throw error;
-  console.log(student);
-});
+// client.GetAllStudent({}, (error, student) => {
+//   // if (!error) throw error;
+//   console.log(student);
+// });
 
-// add a news
-client.addStudent(
-  {
-    mssv: 3,
-    lastName: "Title news 3",
-    firstName: "Body content 3",
-    year: "Image URL here",
-  },
-  (error, student) => {
-    if (error) throw error;
-    console.log("Successfully created a news.");
-    console.log(student);
-  }
-);
-
-// edit a news
-client.editStudent(
-  {
-    mssv: 1712180,
-    lastName: "Body content 2 edited.",
-    firstName: "Image URL edited.",
-    year: "Title for 2 edited.",
-  },
-  (error, student) => {
-    if (error) throw error;
-    console.log("Successfully edited a news.");
-  }
-);
-
-// delete a news
-// client.deleteStudent(
+// add a student
+// client.addStudent(
 //   {
-//     mssv: 1712180,
+//     mssv: '1653098',
+//     lastName: "Tu",
+//     firstName: "Minh",
+//     year: "6",
 //   },
 //   (error, student) => {
 //     if (error) throw error;
-//     console.log("Successfully deleted a student item.");
+//     console.log("Successfully created a news.");
+//     console.log(student);
 //   }
 // );
+
+// edit a student
+// client.editStudent(
+//   {
+//     mssv: '18127219', // match 
+//     lastName: "Thao edited.",
+//     firstName: "Nguyen edited.",
+//     year: "Year edited.",
+//   },
+//   (error, student) => {
+//     if (error) throw error;
+//     console.log("Successfully edited a news.");
+//   }
+// );
+
+// delete a student
+// client.deleteStudent(
+//   {
+//     id: '18127219',
+//   },
+//   (error, student) => {
+//     if (error) throw error;
+//     console.log(student);
+//     console.log("Successfully deleted a student item.");
+   
+//   }
+// );
+
+
+client.getStudent(
+  {id: 18126020},(error, student) =>{
+    if(error) throw error;
+    console.log(student);
+  }
+)
